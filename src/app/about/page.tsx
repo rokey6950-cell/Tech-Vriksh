@@ -250,7 +250,7 @@ export default function AboutPage() {
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {teamMembers.map((member) => (
             <article
-              key={member.name}
+              key={`${member.name}-${member.department}`}
               className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[color:var(--tv-border)] bg-gradient-to-b from-[rgba(16,30,26,0.8)] to-[rgba(11,23,20,0.95)] p-5 sm:p-6 shadow-[var(--tv-shadow-md)] transition-all duration-500 hover:border-[color:var(--tv-primary)]/50 hover:shadow-[0_20px_50px_rgba(57,217,138,0.18)] hover:-translate-y-2"
             >
               {/* Image & Header Details */}

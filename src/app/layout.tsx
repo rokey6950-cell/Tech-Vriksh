@@ -44,12 +44,12 @@ export default function RootLayout({
       <head>
         <link rel="preload" href="/tech-vriksh-logo.webp" as="image" type="image/webp" fetchPriority="high" />
       </head>
-      <body className={`${spaceGrotesk.variable} ${inter.variable} ${jetBrainsMono.variable} tv-shell`}>
+      <body className={`${spaceGrotesk.variable} ${inter.variable} ${jetBrainsMono.variable} tv-shell flex flex-col min-h-screen`}>
         <BrandLoader />
         <LenisProvider>
           <ScrollScene />
           <SiteHeader />
-          <div className="tv-content-layer">{children}</div>
+          <div className="flex-1 flex flex-col tv-content-layer">{children}</div>
           <Footer />
         </LenisProvider>
       </body>

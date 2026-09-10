@@ -193,7 +193,7 @@ export const partnershipFormUrl = '';
  * literally reads 'Sample partner slot' and its notes say 'Sponsor list can be
  * swapped later' — so they are not evidence of a real arrangement.
  */
-export const eventHostVenues = ['OpsTree Global, Noida'];
+export const eventHostVenues = ['OpsTree Global, Noida', 'Unstop Office, New Delhi'];
 
 /**
  * Collaborations with organisations outside Tech Vriksh. Shared by the Join and
@@ -227,6 +227,28 @@ export const communityGalleryPhotos = [
 ];
 
 export const events: EventItem[] = [
+  {
+    slug: 'compilex-where-ideas-evolve-into-impact',
+    title: 'CompileX',
+    subtitle: 'Where Ideas Evolve Into Impact',
+    kind: 'workshop',
+    format: 'offline',
+    status: 'past',
+    dateLabel: '05 Sep, 2026',
+    description:
+      'A full day of hands-on building, real industry insight, and career growth at Unstop Office, Delhi — building MCP Servers, an AI job matching pipeline, and working Android apps.',
+    image: '/events/compilex-where-ideas-evolve-into-impact/01.webp.jpg',
+    galleryImages: [
+      '/events/compilex-where-ideas-evolve-into-impact/01.webp.jpg'
+    ],
+    venue: 'Unstop Office, Saket, New Delhi',
+    registrationUrl: 'https://luma.com/1iyvncna',
+    notes: [
+      'Held at Unstop Office, Saket, New Delhi',
+      'Hands-on MCP Server, AI Pipeline & Android App development',
+      'Full-day build session'
+    ]
+  },
   {
     slug: 'ctrl-future',
     title: 'Ctrl + Future',
@@ -577,166 +599,208 @@ export const hackathons: HackathonDetail[] = [
 
 export const teamDepartments: TeamDepartment[] = [
   {
-    department: '',
-    summary: '',
+    department: 'Leadership',
+    summary: 'Guides community vision, ecosystem strategy, and strategic institutional partnerships.',
     members: [
       {
         name: 'Krishna Agarwal',
         role: 'Founder',
-        image: driveImage('1cc8Mse57cPgUz5ZY1KeXA0HzFXn9lC9s'),
-        focus: 'Community direction and partnerships',
+        image: '/team/Krishna Agarwal (1).jpeg',
+        focus: 'Community direction, ecosystem strategy, and partnerships',
         linkedinUrl: 'https://www.linkedin.com/in/krishna-agarwal13/'
-      },
+      }
     ]
   },
   {
-    department: 'Design & Content',
-    summary: 'Shapes the event story, visual tone, and content direction across the community.',
+    department: 'Director Team',
+    summary: 'Drives cross-functional execution, community growth initiatives, and organizational leadership.',
     members: [
       {
         name: 'Geetanjali',
         role: 'Director of Design and Content',
-        image: driveImage('1CNAlCJqjfl6wvBuFAv3QDhVviKnjtUex'),
-        focus: 'Visual direction and content planning',
+        image: '/team/Geetanjali.jpeg',
+        focus: 'Visual direction, brand identity, and creative strategy',
         linkedinUrl: 'https://www.linkedin.com/in/geetanjali-y-7146aa210/'
-      }
-    ]
-  },
-    {
-    department: 'Marketing & Growth',
-    summary: 'Handles outreach, audience growth, and brand visibility for the community.',
-    members: [
+      },
       {
         name: 'Rohan Sharma',
         role: 'Director of Marketing and Growth',
-        image: driveImage('1T92DE2mX74FVjxCw5omw6fCHvHeJrFpT'),
-        focus: 'Growth strategy and outreach',
+        image: '/team/Rohan Sharma.jpeg',
+        focus: 'Audience growth, outreach strategy, and brand visibility',
         linkedinUrl: 'https://www.linkedin.com/in/rohan-sharma-021429307/'
-      }
-    ]
-  },
-  {
-    department: 'PR',
-    summary: 'Decides where Tech Vriksh grows',
-    members: [
+      },
       {
         name: 'Bharat Chadha',
         role: 'Director of PR and Outreach',
-        image: driveImage('14Hm7RfAsZlY2iY_s2hmTPbHwHJnz65j1'),
-        focus: 'Visual direction and content planning',
+        image: '/team/Bharat Chadha (2).jpeg',
+        focus: 'Public relations, institutional tie-ups, and ecosystem reach',
         linkedinUrl: 'https://www.linkedin.com/in/bharat-chadha2006/'
       }
     ]
   },
-
   {
-    department: 'Research',
-    summary: 'Turns topic ideas into clear, usable workshop outlines and speaker briefs.',
+    department: 'Tech & Operations',
+    summary: 'Manages platform architecture, technical infrastructure, and end-to-end community operations.',
     members: [
       {
-        name: 'Riya Srivastava',
-        role: 'Research Analyst',
-        image: driveImage('15j0mziU6GQrlVMKAdV2_dh6hpvLPm1SN'),
-        focus: 'Research briefs and content validation',
-        linkedinUrl: 'https://www.linkedin.com/in/riya-srivastava-385b8932a'
+        name: 'Anurag Kumar',
+        role: 'Tech & Operations Lead',
+        image: '/team/Anurag Kumar.jpeg',
+        focus: 'Platform development, technical infrastructure, and operations',
+        linkedinUrl: 'https://www.linkedin.com/in/anurag-kumar-b6a3753bb/'
       }
     ]
   },
   {
-    department: 'Social Media',
-    summary: 'Keeps the public-facing community channels active, clear, and consistent.',
+    department: 'Design',
+    summary: 'Shapes user interfaces, promotional visual assets, and cohesive design systems.',
     members: [
       {
-        name: 'Sampada Singh',
-        role: 'Social Media Manager',
-        image: driveImage('1IwP0EFqAGdjHY8V9xOud5MDlpq7Zejr5'),
-        focus: 'Content calendar and posting',
-        linkedinUrl: 'https://www.linkedin.com/in/sampada-singh-599421359/'
+        name: 'Gayathri Komanduri',
+        role: 'Design Team',
+        image: '/team/Gayathri Komanduri (2).jpeg',
+        focus: 'Visual design, UI/UX, and event design assets',
+        linkedinUrl: 'https://www.linkedin.com/in/gayathri-komanduri20/'
       },
+      {
+        name: 'Manan Lamba',
+        role: 'Design Team',
+        image: '/team/Manan Lamba.jpeg',
+        focus: 'Creative assets, graphic design, and brand styling',
+        linkedinUrl: 'https://www.linkedin.com/company/tech-vriksh/'
+      }
+    ]
+  },
+  {
+    department: 'Content Writing',
+    summary: 'Articulates the community story through announcements, event guides, and written narratives.',
+    members: [
+      {
+        name: 'Yashmita Kalyanadurg',
+        role: 'Content Writer',
+        image: '/team/Yashmita Kalyanadurg.jpeg',
+        focus: 'Content writing, storytelling, and editorial pieces',
+        linkedinUrl: 'https://www.linkedin.com/in/yashmita-kalyanadurg-205a1939b/'
+      },
+      {
+        name: 'Mansi Verma',
+        role: 'Content Writer',
+        image: '/team/Mansi Verma.jpeg',
+        focus: 'Event copies, announcements, and written communication',
+        linkedinUrl: 'https://www.linkedin.com/company/tech-vriksh/'
+      }
+    ]
+  },
+  {
+    department: 'Research',
+    summary: 'Turns emerging tech concepts into structured workshop outlines and speaker briefs.',
+    members: [
+      {
+        name: 'Riya Srivastava',
+        role: 'Research Analyst',
+        image: '/team/Riya Srivastava (2).jpeg',
+        focus: 'Research briefs, curriculum planning, and content validation',
+        linkedinUrl: 'https://www.linkedin.com/in/riya-srivastava-385b8932a/'
+      },
+      {
+        name: 'Nikhil Bindal',
+        role: 'Research Analyst',
+        image: '/team/Nikhil Bindal.jpeg',
+        focus: 'Technology trends, topic analysis, and speaker briefs',
+        linkedinUrl: 'https://www.linkedin.com/in/nikhil-bindal-185403339/'
+      },
+      {
+        name: 'Tejaswi Anand',
+        role: 'Research Analyst',
+        image: '/team/Tejaswi Anand.jpeg',
+        focus: 'Topic frameworks, session research, and domain insights',
+        linkedinUrl: 'https://www.linkedin.com/in/anandtejaswi/'
+      }
+    ]
+  },
+  {
+    department: 'Video Editing',
+    summary: 'Produces polished event highlights, recaps, reels, and video storytelling.',
+    members: [
+      {
+        name: 'Gunjan Kumari',
+        role: 'Video Editor',
+        image: '/team/Gunjan Kumari (1).jpeg',
+        focus: 'Event highlight cuts, reels, and video post-production',
+        linkedinUrl: 'https://www.linkedin.com/in/gunjan-kushwaha-78149b311/'
+      },
+      {
+        name: 'Divyansh Singh',
+        role: 'Video Editor',
+        image: '/team/Divyansh Singh (1).jpeg',
+        focus: 'Session footage edits, recaps, and video storytelling',
+        linkedinUrl: 'http://www.linkedin.com/in/divyansh-singh-08-31-'
+      },
+      {
+        name: 'Akshay Rao',
+        role: 'Video Editor',
+        image: '/team/Akshay Rao.jpeg',
+        focus: 'Motion edits, teasers, and visual media production',
+        linkedinUrl: 'https://www.linkedin.com/company/tech-vriksh/'
+      }
     ]
   },
   {
     department: 'WhatsApp Community',
-    summary: 'Welcomes members, keeps the chat organised, and handles day-to-day community flow.',
+    summary: 'Welcomes new members, facilitates discussions, and manages daily community flow.',
     members: [
       {
-        name: 'Princy Kumari',
-        role: 'WhatsApp Community Management Team',
-        image: driveImage('1ThU8qn643kkpBZUHHymF1wkB3CA2i7R3'),
-        focus: 'Community moderation and welcome flow',
-        linkedinUrl: 'https://www.linkedin.com/in/princy-kumari-a4aa82339/'
+        name: 'Janvi Narang',
+        role: 'WhatsApp Community Manager',
+        image: '/team/Janvi Narang (2).jpeg',
+        focus: 'Member onboarding, community queries, and discussions',
+        linkedinUrl: 'https://www.linkedin.com/in/janvi-narang-2b2b18381'
+      },
+      {
+        name: 'Depender Yadav',
+        role: 'WhatsApp Community Manager',
+        image: '/team/Depender Yadav.jpeg',
+        focus: 'Community engagement, group discussions, and student support',
+        linkedinUrl: 'https://www.linkedin.com/in/deepak-yadav2006/'
       },
       {
         name: 'Tanishak Tyagi',
-        role: 'WhatsApp Community Management Team',
-        image: driveImage('1lVnPXyJAgE24Ma3UsipmIdcU8XUYUhBc'),
-        focus: 'Group coordination and support',
+        role: 'WhatsApp Community Manager',
+        image: '/team/Tanishak Tyagi (3).jpeg',
+        focus: 'Group flow, event alerts, and student coordination',
         linkedinUrl: 'https://www.linkedin.com/in/tanishak-tyagi-744501319/'
       }
     ]
   },
   {
     department: 'Social Media',
-    summary: 'Keeps the public-facing community channels active, clear, and consistent.',
+    summary: 'Maintains active presence, engagement, and visibility across public channels.',
     members: [
       {
-        name: 'Santosh Kumar Verma',
-        role: 'Social Media Team',
-        image: driveImage('1krTQLRcsSE-RWtCpvz3avLqzqg-zkJWN'),
-        focus: 'Community social support',
-        linkedinUrl: 'https://www.linkedin.com/in/santoshverma77'
-      }
-    ]
-  },
-  {
-    department: 'WhatsApp Community',
-    summary: 'Welcomes members, keeps the chat organised, and handles day-to-day community flow.',
-    members: [
-      {
-        name: 'Janvi Narang',
-        role: 'WhatsApp Community Management Team',
-        image: driveImage('1zie9Rf6ULL_XPRf5quoo34vSXIBljLc3'),
-        focus: 'Group coordination and support',
-        linkedinUrl: 'https://www.linkedin.com/in/janvi-narang-2b2b18381'
-      }
-    ]
-  },
-  {
-    department: 'Video Editing',
-    summary: 'Turns event footage into short, polished clips for social channels and recaps.',
-    members: [
-      {
-        name: 'Divyansh Singh',
-        role: 'Video Editing Team',
-        image: driveImage('1FbAaZwZg1Q0tMngDiJK0tIdeniYauOfS'),
-        focus: 'Event video edits',
-        linkedinUrl: 'https://www.linkedin.com/in/divyansh-singh-08-31-'
+        name: 'Pragati Jha',
+        role: 'Social Media Strategist',
+        image: '/team/Pragati Jha.jpeg',
+        focus: 'Social media growth, campaigns, and audience engagement',
+        linkedinUrl: 'https://www.linkedin.com/in/pragati-jha-445319365'
       },
       {
-        name: 'Gunjan Kumari',
-        role: 'Video Editing Team',
-        image: driveImage('1ylayfubPS7Ox3sxFddjmHejsbyCg6iaf'),
-        focus: 'Highlight cuts and short-form edits',
-        linkedinUrl: 'https://www.linkedin.com/in/gunjan-kushwaha-78149b311/'
+        name: 'Sampada Singh',
+        role: 'Social Media Manager',
+        image: '/team/Sampada Singh.jpeg',
+        focus: 'Content calendar, campaign publishing, and brand outreach',
+        linkedinUrl: 'https://www.linkedin.com/in/sampada-singh-599421359/'
       }
     ]
   },
   {
     department: 'Anchors',
-    summary: 'Hosts sessions and keeps on-stage transitions clean and clear for attendees.',
+    summary: 'Hosts events, moderates speaker sessions, and energises community audiences.',
     members: [
-      {
-        name: 'Gayathri Komanduri',
-        role: 'Anchor / Host',
-        image: driveImage('1bz-0bqu2bT9US8mhbaotA-R0M0jK1Cmi'),
-        focus: 'Session hosting and transitions',
-        linkedinUrl: 'https://www.linkedin.com/in/gayathri-komanduri20/'
-      },
       {
         name: 'Sneha Dingoriya',
         role: 'Anchor / Host',
-        image: driveImage('1DRwns406RgYbpUY7Kccq0gXrwjLOpAVn'),
-        focus: 'Stage delivery and session flow',
+        image: '/team/Sneha.jpeg',
+        focus: 'Event hosting, stage delivery, and live session transitions',
         linkedinUrl: 'https://www.linkedin.com/in/sneha-dingoriya-8949ba368/'
       }
     ]
@@ -774,8 +838,8 @@ export type PublicStat = {
 export const publicStats: Record<'members' | 'states' | 'events' | 'team', PublicStat> = {
   members: { count: 1000, suffix: '+', label: 'Community members' },
   states: { count: 15, suffix: '+', label: 'States' },
-  events: { count: 14, suffix: '+', label: 'Events' },
-  team: { count: 15, suffix: '+', label: 'Core team', note: 'Working constantly' }
+  events: { count: 15, suffix: '+', label: 'Events' },
+  team: { count: 20, suffix: '+', label: 'Core team', note: 'Working constantly' }
 };
 
 /**
@@ -838,6 +902,12 @@ export const journeyMilestones: JourneyMilestoneData[] = [
       '80–90 attendees at OpsTree Global, Noida. Four sessions: career guidance (Microsoft MVP), OSINT and cybersecurity, AI agents, and open discussion.',
   },
   {
+    period: 'Sep 2026',
+    title: 'CompileX — Offline at Unstop Office',
+    description:
+      'Full-day hands-on building at Unstop Office, Saket. Live sessions on MCP servers, AI pipelines, and Android app development.',
+  },
+  {
     period: 'What\'s next',
     title: 'Your chapter',
     description:
@@ -845,3 +915,207 @@ export const journeyMilestones: JourneyMilestoneData[] = [
     isFuture: true,
   },
 ];
+
+// ─── Blog Posts ─────────────────────────────────────────────────────────────
+export type BlogPost = {
+  slug: string;
+  title: string;
+  date: string;
+  author: string;
+  summary: string;
+  content: string;
+};
+
+export const blogPosts: BlogPost[] = [
+  {
+    slug: 'ai-in-everyday-life',
+    title: 'AI in Everyday Life: How Artificial Intelligence Is Changing the Way We Learn',
+    date: '10 Sep, 2026',
+    author: 'Yashmita Kalyanadurg',
+    summary: 'Artificial intelligence is becoming an increasingly important part of everyday student life. Learn how students can use AI responsibly as a personal learning assistant.',
+    content: `Imagine having a study assistant available at midnight—one that can explain a difficult concept, translate a paragraph in seconds, generate practice questions, or help organise your ideas before an assignment.
+
+This is no longer science fiction.
+
+Artificial intelligence (AI) is becoming an increasingly important part of everyday student life. From personalised learning tools to translation and accessibility features, AI is changing the way students **learn, communicate, research, and solve problems**.
+
+The real question is not whether AI will influence education. It already is.
+
+The more important question is: **How can students use it responsibly and effectively?**
+
+## What Is Artificial Intelligence?
+
+Artificial intelligence refers to computer systems designed to perform tasks that typically require human intelligence.
+
+These tasks can include:
+
+**Recognising patterns**
+AI can identify patterns and relationships in large amounts of information.
+
+**Understanding language**
+Modern AI systems can process and respond to human language, making it possible to interact with technology using natural conversations.
+
+**Making predictions**
+AI can analyse data and use learned patterns to predict possible outcomes.
+
+**Generating content**
+Generative AI can create text, images, audio, video, and computer code based on instructions provided by users.
+
+Modern AI systems learn from large amounts of data and use those learned patterns to produce useful results. This makes AI increasingly valuable in education, where students often need information explained in different ways and at different levels of difficulty.
+
+## How Students Can Use AI
+
+AI can become a powerful learning companion when it is used responsibly.
+
+Instead of simply asking AI to complete an assignment, students can use it to make the learning process more interactive.
+
+### Explain Difficult Concepts
+
+Students can ask AI to explain complicated topics in simpler language, provide analogies, or break a subject into smaller steps.
+
+For example, a psychology student could ask an AI tool to explain **classical conditioning** in simple terms and then use that explanation as a starting point for deeper study.
+
+### Generate Practice Questions
+
+AI can create quizzes, flashcards, and practice problems based on a student's topic of study. This allows students to test their knowledge and identify areas where they need more practice.
+
+### Brainstorm Ideas
+
+When students are unsure where to begin with an assignment or project, AI can help generate ideas, organise thoughts, and suggest possible approaches.
+
+### Translate and Simplify Information
+
+AI-powered translation tools can help students understand learning materials written in unfamiliar languages. AI can also rewrite complicated information into simpler language.
+
+### Get Feedback
+
+Students can use AI to review drafts, identify unclear sections, suggest improvements, or provide feedback on structure and readability.
+
+Used in this way, AI becomes less of an answer generator and more of a **personal learning assistant**.
+
+## The Benefits—and the Risks
+
+AI offers several potential benefits for students, but it also introduces important challenges.
+
+### The Benefits
+
+**Personalised Learning**
+AI can provide explanations at different levels of difficulty, allowing students to learn according to their individual needs.
+
+**Instant Support**
+Students can receive explanations, examples, and practice material whenever they need them.
+
+**More Efficient Learning**
+AI can help reduce the time spent on routine tasks, giving students more time to focus on analysis, creativity, and problem-solving.
+
+**A Comfortable Learning Environment**
+Students can repeatedly ask questions and practise difficult topics without feeling embarrassed about making mistakes.
+
+**Improved Accessibility**
+Translation, summarisation, speech, and other AI-powered features can make educational resources easier to access and understand.
+
+### The Risks
+
+AI is not perfect.
+
+It can sometimes produce inaccurate information, reflect biases present in its training data, or present an incorrect answer with a high level of confidence.
+
+There is also a risk of **overdependence**.
+
+When students allow AI to do all the thinking, writing, or problem-solving for them, they may miss opportunities to develop important skills such as independent thinking, creativity, research, and communication.
+
+The goal should therefore not be to use **more AI**, but to use **better AI practices**.
+
+## Using AI the Smart Way
+
+The best approach is to treat AI as a **learning assistant—not a replacement for learning**.
+
+Students can get the most value from AI by following a few simple principles.
+
+### 1. Verify Important Information
+
+AI-generated answers should not automatically be treated as facts. Important information should be checked against reliable books, academic sources, official websites, or trusted educational resources.
+
+### 2. Protect Personal Information
+
+Students should avoid sharing sensitive personal information, passwords, private documents, or other confidential data with AI systems.
+
+### 3. Follow Academic-Integrity Rules
+
+Different institutions may have different rules regarding AI use. Students should understand and follow their college or university's policies.
+
+### 4. Understand What You Submit
+
+Submitting AI-generated work without understanding it can undermine the learning process. Students should review, question, edit, and understand the material before using it.
+
+### 5. Use AI to Learn, Not Just to Finish
+
+Instead of asking:
+
+**“Do my assignment for me.”**
+
+Try asking:
+
+**“Explain this topic, quiz me on it, and give me feedback on my answer.”**
+
+That small change can turn AI from a shortcut into a genuine learning tool.
+
+## The Future of Learning Is Human + AI
+
+Artificial intelligence is changing education, but it does not replace the qualities that make learning meaningful.
+
+Curiosity, critical thinking, creativity, communication, judgement, and the ability to question information remain essential.
+
+AI can provide answers quickly, but students still need to determine:
+
+**Is this information accurate?**
+**Do I understand it?**
+**Can I explain it myself?**
+**What should I do with it?**
+
+The strongest learners of the future may not be those who use AI the most, but those who know **when, why, and how to use it effectively**.
+
+## Key Takeaway
+
+Artificial intelligence is reshaping education by making information, personalised explanations, practice, and learning support more accessible.
+
+But its real value depends on how it is used.
+
+When students combine AI with **curiosity, critical thinking, creativity, and fact-checking**, the technology can become a powerful partner in learning—without replacing the human skills that matter most.
+
+> **AI should not replace the way we learn. It should help us learn better.**
+
+## References
+
+**IBM.** *What is Artificial Intelligence (AI)?* IBM.
+
+**UNESCO.** (2023). *Guidance for Generative AI in Education and Research.* UNESCO.`
+  },
+  {
+    slug: 'i-asked-an-ai-to-do-my-errands',
+    title: 'I Asked an AI to Do My Errands. It Actually Did Them.',
+    date: '11 Sep, 2026',
+    author: 'Mansi Verma',
+    summary: 'The AI we all got used to talking to has quietly started doing things for us. Discover how Agentic AI is transforming tasks from passive chats to active execution.',
+    content: `Last month, I watched someone type a single line into their laptop: "Book the cheapest Delhi to Rajasthan trip for Friday and add it to my calendar." Then they closed the lid and walked off to make chai. No opening tabs, no comparing prices, no copy-pasting into a calendar app. Ten minutes later, it was done. I stood there a little stunned, honestly. That's when it hit me: the AI we all got used to **talking to** has quietly started **doing things for us.**
+
+This shift has a name: **Agentic AI.** And once you notice it, you start seeing it everywhere.
+
+## The Difference Most People Miss:
+
+Here's what most explainers get wrong — they treat this like a small upgrade. It isn't! A chatbot is like a friend who gives you directions. An agent is a friend who takes the keys and drives. When ChatGPT or Claude answers a question, that's still just conversation — helpful, but passive. An agent breaks your request into steps, opens a browser, checks a few sites instead of one, notices when something's gone wrong, and fixes it — all without asking you at every step. That's the real shift.
+
+I spent a weekend reading up on why this became possible now, and it comes down to three things maturing together: AI models got better at planning multi-step tasks instead of just predicting the next word; developers built safe ways for AI to actually use software — browsers, code editors, spreadsheets; and agents finally learned to hold context through an entire task instead of forgetting step one by step four.
+
+## Where It's Already Working:
+
+Claude Code writes and debugs real software with barely a nudge. Customer support agents, like the one Klarna uses, resolve entire refund cases from start to finish — not just answering "where's my order," but actually processing it. Research agents can pull information from dozens of sources, cross-check them, and put together something closer to a junior analyst's report than a simple search result. None of this is a demo anymore — it's everyday infrastructure for a growing number of companies.
+
+## Why This Matters for You:
+
+If you're in tech right now, here's the honest takeaway: stop thinking of AI as autocomplete, and start thinking of it as a teammate that occasionally needs supervision. Students who learn to direct agents — not just chat with them — will be the ones building the next generation of tools, not just using them.
+
+We spent the last decade teaching machines to answer questions. The next decade is about teaching them to finish tasks. That's worth paying attention to.`
+  }
+];
+
