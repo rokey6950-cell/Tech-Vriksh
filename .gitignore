@@ -12,3 +12,4 @@ tsconfig.tsbuildinfo
 .scratch/
 .*.html
 .*.log
+node_modules
