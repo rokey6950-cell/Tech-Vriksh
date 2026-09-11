@@ -56,7 +56,7 @@ This repository houses the official **Tech Vriksh Website** built with cutting-e
 ## 📂 Directory Structure
 
 ```text
-Tech-Vriksh-main/
+Tech-Vriksh/
 ├── public/
 │   ├── brand/               # Brand logos and assets
 │   ├── sample/              # Event photos & hackathon banners
@@ -89,8 +89,8 @@ Tech-Vriksh-main/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/nirajshukla13/Tech-Vriksh.git
-   cd Tech-Vriksh-main
+   git clone https://github.com/rokey6950-cell/Tech-Vriksh.git
+   cd Tech-Vriksh
    ```
 
 2. **Install dependencies**:
