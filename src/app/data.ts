@@ -677,13 +677,6 @@ export const teamDepartments: TeamDepartment[] = [
         image: '/team/Yashmita Kalyanadurg.jpeg',
         focus: 'Content writing, storytelling, and editorial pieces',
         linkedinUrl: 'https://www.linkedin.com/in/yashmita-kalyanadurg-205a1939b/'
-      },
-      {
-        name: 'Mansi Verma',
-        role: 'Content Writer',
-        image: '/team/Mansi Verma.jpeg',
-        focus: 'Event copies, announcements, and written communication',
-        linkedinUrl: 'https://www.linkedin.com/company/tech-vriksh/'
       }
     ]
   },
@@ -718,20 +711,6 @@ export const teamDepartments: TeamDepartment[] = [
     department: 'Video Editing',
     summary: 'Produces polished event highlights, recaps, reels, and video storytelling.',
     members: [
-      {
-        name: 'Gunjan Kumari',
-        role: 'Video Editor',
-        image: '/team/Gunjan Kumari (1).jpeg',
-        focus: 'Event highlight cuts, reels, and video post-production',
-        linkedinUrl: 'https://www.linkedin.com/in/gunjan-kushwaha-78149b311/'
-      },
-      {
-        name: 'Divyansh Singh',
-        role: 'Video Editor',
-        image: '/team/Divyansh Singh (1).jpeg',
-        focus: 'Session footage edits, recaps, and video storytelling',
-        linkedinUrl: 'http://www.linkedin.com/in/divyansh-singh-08-31-'
-      },
       {
         name: 'Akshay Rao',
         role: 'Video Editor',
