@@ -759,7 +759,7 @@ export const teamDepartments: TeamDepartment[] = [
       {
         name: 'Depender Yadav',
         role: 'WhatsApp Community Manager',
-        image: '/team/Depender Yadav.jpeg',
+        image: '/team/Depender Yadav.png',
         focus: 'Community engagement, group discussions, and student support',
         linkedinUrl: 'https://www.linkedin.com/in/deepak-yadav2006/'
       },
