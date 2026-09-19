@@ -6,14 +6,59 @@ interface AudioPlayerProps {
   contentSelector?: string;
 }
 
+/**
+ * Splits long text into natural sentence/clause chunks (< 160 characters)
+ * to bypass Chromium's 15-second speech buffer timeout on long articles.
+ */
+function splitIntoChunks(text: string, maxChunkLength = 160): string[] {
+  const rawSentences = text.match(/[^.!?\n]+[.!?\n]+|[^.!?\n]+$/g) || [text];
+  const chunks: string[] = [];
+
+  for (const sentence of rawSentences) {
+    const trimmed = sentence.trim();
+    if (!trimmed) continue;
+
+    if (trimmed.length <= maxChunkLength) {
+      chunks.push(trimmed);
+    } else {
+      // Split on clauses (commas, colons, semicolons) if sentence is very long
+      const subParts = trimmed.match(/[^,;:]+[,;:]*|.+/g) || [trimmed];
+      let currentSub = '';
+      for (const part of subParts) {
+        if ((currentSub + ' ' + part).trim().length <= maxChunkLength) {
+          currentSub = (currentSub + ' ' + part).trim();
+        } else {
+          if (currentSub) chunks.push(currentSub);
+          currentSub = part.trim();
+        }
+      }
+      if (currentSub) chunks.push(currentSub);
+    }
+  }
+
+  return chunks.length > 0 ? chunks : [text];
+}
+
 export function AudioPlayer({ contentSelector = '.blog-content' }: AudioPlayerProps) {
   const [isSupported, setIsSupported] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [speed, setSpeed] = useState<number>(1);
+  const [progress, setProgress] = useState<number>(0);
   const [statusMessage, setStatusMessage] = useState('Audio player ready');
 
-  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  // References for robust playback queue
+  const chunksRef = useRef<string[]>([]);
+  const chunkIndexRef = useRef<number>(0);
+  const isPlayingRef = useRef<boolean>(false);
+  const isPausedRef = useRef<boolean>(false);
+  const speedRef = useRef<number>(1);
+  const currentUtteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+
+  // Sync state with refs
+  useEffect(() => {
+    speedRef.current = speed;
+  }, [speed]);
 
   // Check browser support and cleanup on unmount
   useEffect(() => {
@@ -25,6 +70,8 @@ export function AudioPlayer({ contentSelector = '.blog-content' }: AudioPlayerPr
     const synth = window.speechSynthesis;
 
     return () => {
+      isPlayingRef.current = false;
+      isPausedRef.current = false;
       synth.cancel();
     };
   }, []);
@@ -32,29 +79,98 @@ export function AudioPlayer({ contentSelector = '.blog-content' }: AudioPlayerPr
   const resetState = useCallback(() => {
     setIsPlaying(false);
     setIsPaused(false);
-    utteranceRef.current = null;
+    setProgress(0);
+    isPlayingRef.current = false;
+    isPausedRef.current = false;
+    chunkIndexRef.current = 0;
+    chunksRef.current = [];
+    currentUtteranceRef.current = null;
     setStatusMessage('Audio finished');
   }, []);
+
+  /**
+   * Speaks the chunk at the given index, recursively continuing through all chunks.
+   */
+  const speakChunk = useCallback((index: number) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+    const synth = window.speechSynthesis;
+
+    if (!isPlayingRef.current || isPausedRef.current) return;
+
+    if (index >= chunksRef.current.length) {
+      resetState();
+      return;
+    }
+
+    chunkIndexRef.current = index;
+    const chunkText = chunksRef.current[index];
+
+    // Calculate percentage progress
+    if (chunksRef.current.length > 0) {
+      const pct = Math.round(((index + 1) / chunksRef.current.length) * 100);
+      setProgress(pct);
+    }
+
+    const utterance = new SpeechSynthesisUtterance(chunkText);
+    utterance.rate = speedRef.current;
+    utterance.pitch = 1.0;
+
+    // Pick natural English voice if available
+    const voices = synth.getVoices();
+    const englishVoice =
+      voices.find((v) => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Online'))) ||
+      voices.find((v) => v.lang.startsWith('en'));
+
+    if (englishVoice) {
+      utterance.voice = englishVoice;
+    }
+
+    utterance.onend = () => {
+      if (isPlayingRef.current && !isPausedRef.current) {
+        speakChunk(index + 1);
+      }
+    };
+
+    utterance.onerror = (e) => {
+      if (e.error === 'interrupted' || e.error === 'canceled') return;
+      // If minor chunk error, try proceeding to next chunk rather than dropping whole article
+      if (isPlayingRef.current && !isPausedRef.current && index + 1 < chunksRef.current.length) {
+        speakChunk(index + 1);
+      } else {
+        resetState();
+      }
+    };
+
+    currentUtteranceRef.current = utterance;
+    synth.speak(utterance);
+  }, [resetState]);
 
   const handlePlayPause = () => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
     const synth = window.speechSynthesis;
 
-    // 1. If currently paused, resume
-    if (synth.paused && isPaused) {
-      synth.resume();
+    // 1. Resume from paused state
+    if (isPaused) {
+      isPausedRef.current = false;
+      isPlayingRef.current = true;
       setIsPaused(false);
       setIsPlaying(true);
       setStatusMessage('Resumed audio');
+
+      // Clear any stuck synthesis state and resume at the current chunk
+      synth.cancel();
+      speakChunk(chunkIndexRef.current);
       return;
     }
 
-    // 2. If currently speaking and not paused, pause
-    if (synth.speaking && !isPaused) {
-      synth.pause();
+    // 2. Pause while playing
+    if (isPlaying) {
+      isPausedRef.current = true;
+      isPlayingRef.current = false;
       setIsPaused(true);
       setIsPlaying(false);
       setStatusMessage('Paused audio');
+      synth.cancel(); // Cleans up current chunk without losing chunkIndexRef
       return;
     }
 
@@ -71,8 +187,8 @@ export function AudioPlayer({ contentSelector = '.blog-content' }: AudioPlayerPr
     const rawText = (targetEl as HTMLElement).innerText || '';
     const cleanText = rawText
       .replace(/```[\s\S]*?```/g, '') // Remove code blocks
-      .replace(/https?:\/\/\S+/g, 'link') // Replace URLs with word link
-      .replace(/[#*_~`>]/g, '') // Remove markdown syntax characters
+      .replace(/https?:\/\/\S+/g, 'link') // Replace URLs with word 'link'
+      .replace(/[#*_~`>]/g, '') // Strip markdown markers
       .trim();
 
     if (!cleanText) {
@@ -80,39 +196,18 @@ export function AudioPlayer({ contentSelector = '.blog-content' }: AudioPlayerPr
       return;
     }
 
-    const utterance = new SpeechSynthesisUtterance(cleanText);
-    utterance.rate = speed;
-    utterance.pitch = 1.0;
+    const chunks = splitIntoChunks(cleanText);
+    chunksRef.current = chunks;
+    chunkIndexRef.current = 0;
+    isPlayingRef.current = true;
+    isPausedRef.current = false;
 
-    // Pick a natural English voice if available
-    const voices = synth.getVoices();
-    const englishVoice =
-      voices.find((v) => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google'))) ||
-      voices.find((v) => v.lang.startsWith('en'));
+    setIsPlaying(true);
+    setIsPaused(false);
+    setProgress(1);
+    setStatusMessage(`Playing article audio (${chunks.length} segments)`);
 
-    if (englishVoice) {
-      utterance.voice = englishVoice;
-    }
-
-    utterance.onstart = () => {
-      setIsPlaying(true);
-      setIsPaused(false);
-      setStatusMessage('Playing article audio');
-    };
-
-    utterance.onend = () => {
-      resetState();
-    };
-
-    utterance.onerror = (e) => {
-      if (e.error !== 'interrupted' && e.error !== 'canceled') {
-        setStatusMessage('Error playing audio');
-      }
-      resetState();
-    };
-
-    utteranceRef.current = utterance;
-    synth.speak(utterance);
+    speakChunk(0);
   };
 
   const handleStop = () => {
@@ -127,13 +222,12 @@ export function AudioPlayer({ contentSelector = '.blog-content' }: AudioPlayerPr
     const nextIdx = (speeds.indexOf(speed) + 1) % speeds.length;
     const nextSpeed = speeds[nextIdx];
     setSpeed(nextSpeed);
+    speedRef.current = nextSpeed;
 
-    // If already playing, restart with new speed
-    if (isPlaying && !isPaused) {
+    // If already playing, restart current chunk with new speed seamlessly
+    if (isPlayingRef.current && !isPausedRef.current) {
       window.speechSynthesis.cancel();
-      setTimeout(() => {
-        handlePlayPause();
-      }, 50);
+      speakChunk(chunkIndexRef.current);
     }
   };
 
@@ -148,7 +242,7 @@ export function AudioPlayer({ contentSelector = '.blog-content' }: AudioPlayerPr
       aria-label="Blog post audio player"
     >
       <div className="flex flex-wrap items-center justify-between gap-4">
-        {/* Play/Pause/Resume & Stop Controls */}
+        {/* Controls: Play/Pause/Resume, Stop & Speed */}
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -199,7 +293,7 @@ export function AudioPlayer({ contentSelector = '.blog-content' }: AudioPlayerPr
           </button>
         </div>
 
-        {/* Visual Waveform & Accessibility Meta */}
+        {/* Status, Progress & Waveform */}
         <div className="flex items-center gap-3">
           {isPlaying && (
             <div className="flex items-center gap-1 h-4" aria-hidden="true">
@@ -210,8 +304,14 @@ export function AudioPlayer({ contentSelector = '.blog-content' }: AudioPlayerPr
             </div>
           )}
 
+          {(isPlaying || isPaused) && progress > 0 && (
+            <span className="tv-mono text-xs text-emerald-400/90 font-medium">
+              {progress}%
+            </span>
+          )}
+
           <span className="tv-mono text-xs text-[color:var(--tv-text-muted)]">
-            {isPlaying ? 'Reading article...' : isPaused ? 'Paused' : 'Text-to-Speech'}
+            {isPlaying ? 'Reading...' : isPaused ? 'Paused' : 'Text-to-Speech'}
           </span>
         </div>
       </div>
