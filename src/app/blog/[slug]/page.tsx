@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { blogPosts } from '@/app/data';
 import { MarkdownRenderer } from '@/components/blog/MarkdownRenderer';
+import { AudioPlayer } from '@/components/blog/AudioPlayer';
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -40,6 +41,9 @@ export default async function BlogPostPage({
           <span>•</span>
           <span>By <strong className="text-[color:var(--tv-text-primary)] font-medium">{post.author}</strong></span>
         </div>
+
+        {/* Audio Player */}
+        <AudioPlayer contentSelector=".blog-content" />
 
         {/* Formatted Markdown Content */}
         <div className="blog-content">
