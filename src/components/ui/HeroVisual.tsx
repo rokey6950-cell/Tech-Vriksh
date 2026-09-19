@@ -51,7 +51,7 @@ const PHOTO_SOURCES: { slug: string; galleryIndex?: number; localSrc?: string }[
   { slug: 'tech-baithak', galleryIndex: 0 },
   { slug: 'ctrl-future', galleryIndex: 1 },
   { slug: 'techpath-1o-discover-decide-dominate', galleryIndex: 3 },
-  { slug: 'compilex-where-ideas-evolve-into-impact', galleryIndex: 0 }
+  { slug: 'compilex-where-ideas-evolve-into-impact', galleryIndex: 1 }
 ];
 
 function buildHeroPhoto(source: (typeof PHOTO_SOURCES)[number]): HeroEventPhoto | null {
