@@ -47,11 +47,11 @@ const RECORDED_ATTENDEES: Record<string, string> = {
 const PHOTO_SOURCES: { slug: string; galleryIndex?: number; localSrc?: string }[] = [
   { slug: 'ctrl-future', localSrc: '/sample/CTRL+Future.jpeg' },
   { slug: 'techpath-1o-discover-decide-dominate', galleryIndex: 1 },
-  { slug: 'snap-the-lens', galleryIndex: 0 },
+  { slug: 'compilex-where-ideas-evolve-into-impact', galleryIndex: 0 },
   { slug: 'tech-baithak', galleryIndex: 0 },
   { slug: 'ctrl-future', galleryIndex: 1 },
   { slug: 'techpath-1o-discover-decide-dominate', galleryIndex: 3 },
-  { slug: 'snap-the-lens', galleryIndex: 1 }
+  { slug: 'compilex-where-ideas-evolve-into-impact', galleryIndex: 0 }
 ];
 
 function buildHeroPhoto(source: (typeof PHOTO_SOURCES)[number]): HeroEventPhoto | null {

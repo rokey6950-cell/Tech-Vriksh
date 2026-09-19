@@ -351,29 +351,6 @@ export const events: EventItem[] = [
     registrationUrl: 'https://lu.ma/tech-vriksh-tech-baithak'
   },
   {
-    slug: 'snap-the-lens',
-    title: 'Snap the Lens',
-    subtitle: 'Offline Event',
-    kind: 'session',
-    format: 'offline',
-    status: 'past',
-    dateLabel: '27 Sep, 2025',
-    description:
-      'A photo-first offline meetup that captured community moments and gave members a lighter way to engage with the group.',
-    image: driveImage('14slovMwWHb6F6IRTClRiYl2wStX69FoU'),
-    // Shot on iPhone, so the originals are HEIC and unusable in a browser;
-    // these are the same frames decoded and re-encoded as WebP.
-    galleryImages: [
-      '/events/snap-the-lens/01.webp',
-      '/events/snap-the-lens/02.webp',
-      '/events/snap-the-lens/03.webp',
-      '/events/snap-the-lens/04.webp',
-      '/events/snap-the-lens/05.webp'
-    ],
-    venue: 'Community studio space',
-    registrationUrl: 'https://lu.ma/tech-vriksh-snap-the-lens'
-  },
-  {
     slug: 'techpath-1o-discover-decide-dominate',
     title: 'Techpath 1.O — Discover. Decide. Dominate',
     subtitle: 'Offline Event',

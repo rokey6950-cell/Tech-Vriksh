@@ -11,7 +11,7 @@ import { communityGalleryPhotos, events, stateMembers, communityJoinUrl, publicS
 
 export default function HomePage() {
   // Featured events
-  const featuredEventSlugs = ['ctrl-future', 'snap-the-lens', 'techpath-1o-discover-decide-dominate'];
+  const featuredEventSlugs = ['ctrl-future', 'compilex-where-ideas-evolve-into-impact', 'techpath-1o-discover-decide-dominate'];
   const featuredEvents = featuredEventSlugs
     .map((slug) => events.find((event) => event.slug === slug))
     .filter((event): event is NonNullable<typeof event> => Boolean(event));
