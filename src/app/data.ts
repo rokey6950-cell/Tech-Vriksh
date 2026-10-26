@@ -146,7 +146,9 @@ export const speakers: Speaker[] = [
     name: 'Arun Chaudhary',
     role: 'Cybersecurity & OSINT Expert',
     topic: 'OSINT and cybersecurity',
-    event: 'Ctrl + Future'
+    event: 'Ctrl + Future',
+    image: '/speakers/Arun chaudhary.png',
+    linkedinUrl: 'https://www.linkedin.com/in/arunchaudhary-cloud-cybersecurity-genai-aisecurity/'
   },
   {
     name: 'Sarvesh Shashikumar',
