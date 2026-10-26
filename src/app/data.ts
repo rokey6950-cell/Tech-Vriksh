@@ -153,7 +153,7 @@ export const speakers: Speaker[] = [
     role: 'AI Agents Speaker',
     topic: 'Building with AI Agents',
     event: 'Ctrl + Future',
-    image: '/speakers/sarvesh-shashikumar.jpg',
+    image: '/speakers/Sarvesh Shashikumar.png',
     linkedinUrl: 'https://www.linkedin.com/in/sarvesh-shashikumar/'
   }
 ];
