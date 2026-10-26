@@ -356,46 +356,71 @@ export default function AboutPage() {
                   {filteredSpeakers.map((speaker) => (
                     <article
                       key={`${speaker.name}-${speaker.event}`}
-                      className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[color:var(--tv-border)] bg-gradient-to-b from-[rgba(16,30,26,0.8)] to-[rgba(11,23,20,0.95)] p-6 sm:p-7 shadow-[var(--tv-shadow-md)] transition-all duration-500 hover:border-[color:var(--tv-primary)]/50 hover:shadow-[0_20px_50px_rgba(57,217,138,0.15)] hover:-translate-y-2"
+                      className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[color:var(--tv-border)] bg-gradient-to-b from-[rgba(16,30,26,0.8)] to-[rgba(11,23,20,0.95)] p-5 sm:p-6 shadow-[var(--tv-shadow-md)] transition-all duration-500 hover:border-[color:var(--tv-primary)]/50 hover:shadow-[0_20px_50px_rgba(57,217,138,0.18)] hover:-translate-y-2"
                     >
+                      {/* Image or initial avatar */}
                       <div className="space-y-4">
-                        {/* Avatar placeholder with initial */}
-                        <div className="flex items-center gap-4">
-                          <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-[color:var(--tv-primary)]/20 bg-gradient-to-br from-[rgba(57,217,138,0.12)] to-[rgba(33,108,103,0.18)] text-2xl font-bold text-[color:var(--tv-primary)] tv-heading shadow-[0_0_18px_rgba(57,217,138,0.12)]">
-                            {speaker.name.charAt(0)}
-                          </div>
-                          <div className="min-w-0">
-                            <h3 className="tv-heading text-lg font-bold tracking-[-0.02em] text-white group-hover:text-[color:var(--tv-primary)] transition-colors duration-300 truncate">
+                        <div className="relative w-full overflow-hidden rounded-2xl aspect-square border border-white/10 bg-black/40 shadow-inner">
+                          {speaker.image ? (
+                            <Image
+                              src={speaker.image}
+                              alt={speaker.name}
+                              width={600}
+                              height={600}
+                              className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover:scale-105"
+                            />
+                          ) : (
+                            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[rgba(57,217,138,0.1)] to-[rgba(33,108,103,0.18)]">
+                              <span className="tv-heading text-7xl font-bold text-[color:var(--tv-primary)] opacity-60">
+                                {speaker.name.charAt(0)}
+                              </span>
+                            </div>
+                          )}
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
+                        </div>
+
+                        {/* Name, Role & Event badge */}
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between gap-2">
+                            <h3 className="tv-heading text-xl sm:text-2xl font-bold tracking-[-0.03em] text-white group-hover:text-[color:var(--tv-primary)] transition-colors duration-300">
                               {speaker.name}
                             </h3>
-                            <p className="tv-mono text-xs uppercase tracking-[0.18em] text-[color:var(--tv-cyan)] font-semibold mt-0.5 truncate">
+                          </div>
+                          <div className="flex items-center justify-between gap-2 pt-0.5">
+                            <p className="tv-mono text-xs uppercase tracking-[0.2em] text-[color:var(--tv-cyan)] font-semibold">
                               {speaker.role}
                             </p>
+                            {/* Event badge */}
+                            <span className="tv-mono text-[0.62rem] uppercase tracking-[0.16em] text-[color:var(--tv-primary)] border border-[color:var(--tv-primary)]/20 rounded-full px-2.5 py-0.5 bg-[color:var(--tv-primary)]/5 shrink-0">
+                              {speaker.event}
+                            </span>
                           </div>
                         </div>
 
-                        {/* Topic */}
-                        <div className="space-y-1.5">
-                          <div className="tv-mono text-[0.62rem] uppercase tracking-[0.22em] text-[color:var(--tv-text-muted)] font-semibold">
-                            Topic
-                          </div>
-                          <p className="text-sm leading-relaxed text-[color:var(--tv-text-secondary)]">
-                            {speaker.topic}
-                          </p>
-                        </div>
+                        {/* Topic as focus text */}
+                        <p className="text-xs sm:text-sm leading-relaxed text-[color:var(--tv-text-secondary)] line-clamp-2">
+                          {speaker.topic}
+                        </p>
+                      </div>
 
-                        {/* Event badge */}
-                        <div className="flex items-center gap-2 rounded-xl border border-[color:var(--tv-primary)]/15 bg-[color:var(--tv-primary)]/5 px-3.5 py-2.5">
-                          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-3.5 w-3.5 shrink-0 fill-none stroke-[color:var(--tv-primary)] stroke-2">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" strokeLinecap="round" strokeLinejoin="round" />
-                            <line x1="16" y1="2" x2="16" y2="6" strokeLinecap="round" />
-                            <line x1="8" y1="2" x2="8" y2="6" strokeLinecap="round" />
-                            <line x1="3" y1="10" x2="21" y2="10" strokeLinecap="round" />
-                          </svg>
-                          <span className="tv-mono text-[0.68rem] uppercase tracking-[0.18em] text-[color:var(--tv-primary)] font-semibold truncate">
-                            {speaker.event}
-                          </span>
-                        </div>
+                      {/* LinkedIn button — shown when URL available, greyed-out placeholder otherwise */}
+                      <div className="mt-5 pt-4 border-t border-white/[0.08]">
+                        {speaker.linkedinUrl ? (
+                          <a
+                            href={speaker.linkedinUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group/link inline-flex w-full items-center justify-center gap-2.5 rounded-full border border-[color:var(--tv-cyan)]/30 bg-[color:var(--tv-cyan)]/8 py-2.5 text-xs tv-mono font-semibold uppercase tracking-[0.18em] text-[color:var(--tv-cyan)] transition-all duration-300 hover:border-[color:var(--tv-cyan)] hover:bg-[color:var(--tv-cyan)]/20 group-hover:border-[color:var(--tv-primary)]/50 group-hover:text-[color:var(--tv-primary)] shadow-[0_0_12px_rgba(107,239,217,0.1)]"
+                          >
+                            <LinkedInIcon />
+                            <span className="transition-transform duration-300 group-hover/link:translate-x-1">Connect on LinkedIn</span>
+                          </a>
+                        ) : (
+                          <div className="inline-flex w-full items-center justify-center gap-2.5 rounded-full border border-white/10 bg-white/[0.02] py-2.5 text-xs tv-mono font-semibold uppercase tracking-[0.18em] text-[color:var(--tv-text-muted)] cursor-default">
+                            <LinkedInIcon />
+                            <span>LinkedIn coming soon</span>
+                          </div>
+                        )}
                       </div>
                     </article>
                   ))}

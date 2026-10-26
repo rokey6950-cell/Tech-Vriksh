@@ -131,6 +131,7 @@ export type Speaker = {
   topic: string;
   event: string;
   image?: string;
+  linkedinUrl?: string;
 };
 
 // Real speakers only — add here as more sessions happen. Photos/LinkedIn can be added once available.
@@ -148,10 +149,12 @@ export const speakers: Speaker[] = [
     event: 'Ctrl + Future'
   },
   {
-    name: 'Sarvesh Shashi Kumar',
+    name: 'Sarvesh Shashikumar',
     role: 'AI Agents Speaker',
-    topic: 'Building with AI agents',
-    event: 'Ctrl + Future'
+    topic: 'Building with AI Agents',
+    event: 'Ctrl + Future',
+    image: '/speakers/sarvesh-shashikumar.jpg',
+    linkedinUrl: 'https://www.linkedin.com/in/sarvesh-shashikumar/'
   }
 ];
 
