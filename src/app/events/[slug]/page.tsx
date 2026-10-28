@@ -112,9 +112,13 @@ export default async function EventRecapPage({
   // see the notes on each `galleryImages` array in `data.ts`.
   const imageNoun = event.format === 'online' ? 'screen capture' : 'photograph';
 
-  // Only Ctrl + Future has speakers on record. Matched on the title rather than
-  // hardcoded, so adding a speaker to any other event surfaces it here too.
-  const eventSpeakers = speakers.filter((s) => s.event === event.title);
+  // Matched on exact title or title prefix (e.g. 'Techpath 1.O' or 'Tech Baithak')
+  const eventSpeakers = speakers.filter(
+    (s) =>
+      s.event === event.title ||
+      event.title.startsWith(s.event) ||
+      s.event.toLowerCase().includes(event.title.toLowerCase())
+  );
 
   const isUpcoming = event.status === 'upcoming';
 

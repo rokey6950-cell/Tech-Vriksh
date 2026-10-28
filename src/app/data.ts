@@ -130,17 +130,29 @@ export type Speaker = {
   role: string;
   topic: string;
   event: string;
+  company?: string;
   image?: string;
   linkedinUrl?: string;
 };
 
 // Real speakers only — add here as more sessions happen. Photos/LinkedIn can be added once available.
 export const speakers: Speaker[] = [
+  // ─── 1. Ctrl + Future ───────────────────────────────────────────────────────
   {
-    name: 'Nitin Pandit',
-    role: 'Microsoft MVP',
-    topic: 'Career guidance session',
-    event: 'Ctrl + Future'
+    name: 'Nitin Sharma',
+    role: 'Senior Product Manager',
+    topic: 'Career Guidance & Product Strategy',
+    event: 'Ctrl + Future',
+    image: '/speakers/Nitin sharma.png',
+    linkedinUrl: 'https://www.linkedin.com/in/nitinpanditofficial/'
+  },
+  {
+    name: 'Sarvesh Shashikumar',
+    role: 'AI Agents Speaker',
+    topic: 'Building with AI Agents',
+    event: 'Ctrl + Future',
+    image: '/speakers/Sarvesh Shashikumar.png',
+    linkedinUrl: 'https://www.linkedin.com/in/sarvesh-shashikumar/'
   },
   {
     name: 'Arun Chaudhary',
@@ -151,12 +163,220 @@ export const speakers: Speaker[] = [
     linkedinUrl: 'https://www.linkedin.com/in/arunchaudhary-cloud-cybersecurity-genai-aisecurity/'
   },
   {
-    name: 'Sarvesh Shashikumar',
-    role: 'AI Agents Speaker',
-    topic: 'Building with AI Agents',
+    name: 'Rajneesh Yadav',
+    role: 'DevOps / AIOps Engineer',
+    topic: 'Agentic Observability',
     event: 'Ctrl + Future',
-    image: '/speakers/Sarvesh Shashikumar.png',
-    linkedinUrl: 'https://www.linkedin.com/in/sarvesh-shashikumar/'
+    image: '/speakers/Rajneesh Yadav.png',
+    linkedinUrl: 'https://www.linkedin.com/in/ops-rajneesh/'
+  },
+  {
+    name: 'Khushi Yadav',
+    role: 'AI Engineer',
+    topic: 'Agentic Observability',
+    event: 'Ctrl + Future',
+    image: '/speakers/Khushi Yadav.png',
+    linkedinUrl: 'https://www.linkedin.com/in/khushiiiyadav/'
+  },
+
+  // ─── 2. Research Mastery Workshop ──────────────────────────────────────────
+  {
+    name: 'Dr. Vibhav Narayan Singh',
+    role: 'Assistant Professor',
+    topic: 'Research Methodology & Academic Writing',
+    event: 'Research Mastery Workshop',
+    image: '/speakers/Dr. Vibhav Narayan Singh.png',
+    linkedinUrl: 'https://www.linkedin.com/in/vibhav-narayan-singh'
+  },
+
+  // ─── 3. Techpath 1.O ────────────────────────────────────────────────────────
+  {
+    name: 'Shivani Joshi',
+    role: 'Cloud & AI Engineer',
+    topic: 'DevOps & Cloud Scalability',
+    event: 'Techpath 1.O',
+    company: 'Microsoft',
+    image: '/speakers/Shivani Joshi.png',
+    linkedinUrl: 'https://www.linkedin.com/in/shivani-joshi-364092127/'
+  },
+  {
+    name: 'Kuldeep Singh Rathore',
+    role: 'GATE Wallah Faculty',
+    topic: 'Career Guidance & Examination Mentorship',
+    event: 'Techpath 1.O',
+    company: 'PhysicsWallah',
+    image: '/speakers/Kuldeep Singh Rathore.png',
+    linkedinUrl: 'https://www.linkedin.com/in/kuldeep-singh-rathore-90b3b4108'
+  },
+  {
+    name: 'Devansh Srivastava',
+    role: 'Senior Manager @ Amity University',
+    topic: 'Skill Mapping & Career Growth',
+    event: 'Techpath 1.O',
+    company: 'Amity University',
+    image: '/speakers/Devansh Srivastava.png',
+    linkedinUrl: 'https://www.linkedin.com/in/devansh-srivastava-kiet'
+  },
+  {
+    name: 'Deepansh Singh',
+    role: 'Google Cloud Ambassador',
+    topic: 'Cloud Computing & Infrastructure',
+    event: 'Techpath 1.O',
+    company: 'Team Computers',
+    image: '/speakers/Deepansh Singh.png',
+    linkedinUrl: 'https://www.linkedin.com/in/deepansharya1111'
+  },
+
+  // ─── 4. Tech Baithak ────────────────────────────────────────────────────────
+  {
+    name: 'Tushaar Tulsiyan',
+    role: 'Cloud & AI Strategy Consultant',
+    topic: 'Prompt Engineering & Enterprise AI',
+    event: 'Tech Baithak',
+    image: '/speakers/Tushaar Tulsiyan.png',
+    linkedinUrl: 'https://www.linkedin.com/in/tushaar/'
+  },
+
+  // ─── 5. Snap the Lens ───────────────────────────────────────────────────────
+  {
+    name: 'Chhavi Garg',
+    role: 'Founder @BharatXR & @Arexa',
+    topic: 'Create your own Snapchat Lens',
+    event: 'Snap the Lens',
+    image: '/speakers/Chhavi Garg.png',
+    linkedinUrl: 'https://www.linkedin.com/in/chhavigg/'
+  },
+
+  // ─── 6. Techpath 2.O ────────────────────────────────────────────────────────
+  {
+    name: 'Deepak Sood',
+    role: 'Industry Speaker & Mentor',
+    topic: 'Career Direction & Tech Pathways',
+    event: 'Techpath 2.O',
+    image: '/speakers/Deepak Sood.png'
+  },
+  {
+    name: 'Manan Bedi',
+    role: 'Tech Speaker',
+    topic: 'Engineering Mindset & Industry Transition',
+    event: 'Techpath 2.O',
+    image: '/speakers/Manan Bedi.png'
+  },
+  {
+    name: 'Aman Singh',
+    role: 'Cybersecurity Professional | Investigator',
+    topic: 'Cybercrime Investigation & Defense',
+    event: 'Techpath 2.O',
+    company: 'TSN Security',
+    image: '/speakers/Aman Singh.png',
+    linkedinUrl: 'https://www.linkedin.com/in/aman-singh-mrm-882a14194/'
+  },
+  {
+    name: 'Tushika Rawat',
+    role: 'Tech Speaker & Consultant',
+    topic: 'Career Strategy & Technology Leadership',
+    event: 'Techpath 2.O',
+    image: '/speakers/Tushika Rawat.png'
+  },
+
+  // ─── 7. Academic Excellence ─────────────────────────────────────────────────
+  {
+    name: 'Aditya Gupta',
+    role: 'Academic & Career Mentor',
+    topic: 'Academic Excellence & Strategy',
+    event: 'Academic Excellence'
+  },
+
+  // ─── 8. Neural Networks ─────────────────────────────────────────────────────
+  {
+    name: 'Palak Sarna',
+    role: 'MSc Advanced Artificial Intelligence',
+    topic: 'Hands-on Neural Networks',
+    event: 'Neural Networks',
+    image: '/speakers/Palak Sarna.png',
+    linkedinUrl: 'https://www.linkedin.com/in/palak-sarna-3b4380217/'
+  },
+
+  // ─── 9. Web Development using Games ─────────────────────────────────────────
+  {
+    name: 'Teeksha Harish',
+    role: 'Fullstack Developer',
+    topic: 'Web Development using Games',
+    event: 'Web Dev & Games',
+    company: 'Google',
+    image: '/speakers/ms. teeksha google.png',
+    linkedinUrl: 'https://www.linkedin.com/in/teeksha-harish-5895a0234/'
+  },
+
+  // ─── CompileX & Hands-on Sessions ───────────────────────────────────────────
+  {
+    name: 'Monika Rajput',
+    role: 'Helping developers build with AI',
+    topic: 'Building MCP Servers',
+    event: 'CompileX',
+    image: '/speakers/Monika Rajput.png',
+    linkedinUrl: 'https://www.linkedin.com/in/mounicarajput/'
+  },
+  {
+    name: 'Akshat Tailang',
+    role: 'Mobile Engineering Initiatives with Gen AI',
+    topic: 'Android App Development',
+    event: 'CompileX',
+    image: '/speakers/Akshat Tailang.png',
+    linkedinUrl: 'https://www.linkedin.com/in/akshat-tailang-4a40a3b8/'
+  },
+  {
+    name: 'Eshika Mahajan',
+    role: 'Cloud and AI ML Evangelist',
+    topic: 'Build an AI Data Pipeline',
+    event: 'CompileX',
+    company: 'Optum',
+    image: '/speakers/Eshika Mahajan.png',
+    linkedinUrl: 'https://www.linkedin.com/in/eshikamahajan/'
+  },
+  {
+    name: 'Surabhi Sharma',
+    role: 'Conversational AI Engineer',
+    topic: 'Build your own AI Agent',
+    event: 'AI Agent Workshop',
+    company: 'Google',
+    image: '/speakers/Surabhi Sharma.png',
+    linkedinUrl: 'https://www.linkedin.com/in/surabhii-sharma/'
+  },
+  {
+    name: 'Shivank A.',
+    role: 'Forward Deployed Engineer',
+    topic: 'Build your own AI Agent',
+    event: 'AI Agent Workshop',
+    company: 'Google',
+    image: '/speakers/Shivank A..png',
+    linkedinUrl: 'https://www.linkedin.com/in/shivank-awasthi/'
+  },
+  {
+    name: 'Brahmjit Singh',
+    role: 'Design Systems Lead',
+    topic: 'Product Design & Design Systems',
+    event: 'Design Workshop',
+    image: '/speakers/Brahmjit Singh.png',
+    linkedinUrl: 'https://www.linkedin.com/in/brahmjit-singh/'
+  },
+  {
+    name: 'Neetika Goel',
+    role: 'AI/ML & Quantitative Research',
+    topic: 'AI/ML in Quantitative Research',
+    event: 'Research & AI',
+    company: 'Deutsche Bank',
+    image: '/speakers/Neetika Goel.png',
+    linkedinUrl: 'https://www.linkedin.com/in/neetikaajaygoel/'
+  },
+  {
+    name: 'Ekta Arora',
+    role: 'Software Developer',
+    topic: 'Engineering & Commercial Vehicles Architecture',
+    event: 'Tech Session',
+    company: 'VE Commercial Vehicles Ltd.',
+    image: '/speakers/Ekta Arora.png',
+    linkedinUrl: 'https://www.linkedin.com/in/ektaarora01/'
   }
 ];
 

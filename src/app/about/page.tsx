@@ -117,7 +117,8 @@ export default function AboutPage() {
           s.name.toLowerCase().includes(q) ||
           s.role.toLowerCase().includes(q) ||
           s.topic.toLowerCase().includes(q) ||
-          s.event.toLowerCase().includes(q)
+          s.event.toLowerCase().includes(q) ||
+          (s.company && s.company.toLowerCase().includes(q))
       )
     : speakers;
 
@@ -355,7 +356,7 @@ export default function AboutPage() {
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {filteredSpeakers.map((speaker) => (
                     <article
-                      key={`${speaker.name}-${speaker.event}`}
+                      key={speaker.name}
                       className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[color:var(--tv-border)] bg-gradient-to-b from-[rgba(16,30,26,0.8)] to-[rgba(11,23,20,0.95)] p-5 sm:p-6 shadow-[var(--tv-shadow-md)] transition-all duration-500 hover:border-[color:var(--tv-primary)]/50 hover:shadow-[0_20px_50px_rgba(57,217,138,0.18)] hover:-translate-y-2"
                     >
                       {/* Image or initial avatar */}
@@ -379,7 +380,7 @@ export default function AboutPage() {
                           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
                         </div>
 
-                        {/* Name, Role & Event badge */}
+                        {/* Name, Role & Event/Company badge */}
                         <div className="space-y-1">
                           <div className="flex items-center justify-between gap-2">
                             <h3 className="tv-heading text-xl sm:text-2xl font-bold tracking-[-0.03em] text-white group-hover:text-[color:var(--tv-primary)] transition-colors duration-300">
@@ -390,9 +391,9 @@ export default function AboutPage() {
                             <p className="tv-mono text-xs uppercase tracking-[0.2em] text-[color:var(--tv-cyan)] font-semibold">
                               {speaker.role}
                             </p>
-                            {/* Event badge */}
+                            {/* Event / Company badge */}
                             <span className="tv-mono text-[0.62rem] uppercase tracking-[0.16em] text-[color:var(--tv-primary)] border border-[color:var(--tv-primary)]/20 rounded-full px-2.5 py-0.5 bg-[color:var(--tv-primary)]/5 shrink-0">
-                              {speaker.event}
+                              {speaker.company || speaker.event}
                             </span>
                           </div>
                         </div>
