@@ -232,10 +232,12 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
             <p className="tv-mono text-xs uppercase tracking-[0.2em] text-[color:var(--tv-cyan)] font-semibold truncate">
               {speaker.role}
             </p>
-            {/* Event / Company badge */}
-            <span className="tv-mono text-[0.62rem] uppercase tracking-[0.16em] text-[color:var(--tv-primary)] border border-[color:var(--tv-primary)]/20 rounded-full px-2.5 py-0.5 bg-[color:var(--tv-primary)]/5 shrink-0">
-              {speaker.company || speaker.event}
-            </span>
+            {/* Company badge — only shown when company is set */}
+            {speaker.company && (
+              <span className="tv-mono text-[0.62rem] uppercase tracking-[0.16em] text-[color:var(--tv-primary)] border border-[color:var(--tv-primary)]/20 rounded-full px-2.5 py-0.5 bg-[color:var(--tv-primary)]/5 shrink-0">
+                {speaker.company}
+              </span>
+            )}
           </div>
         </div>
 
