@@ -327,6 +327,7 @@ export const speakers: Speaker[] = [
     role: 'AI Advocate',
     topic: 'Building MCP Servers',
     event: 'CompileX',
+    company: 'AI Advocate',
     image: '/speakers/Monika Rajput.png',
     linkedinUrl: 'https://www.linkedin.com/in/mounicarajput/'
   },
