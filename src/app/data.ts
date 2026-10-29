@@ -143,30 +143,34 @@ export const speakers: Speaker[] = [
     role: 'Senior Product Manager',
     topic: 'Career Guidance & Product Strategy',
     event: 'Ctrl + Future',
+    company: 'Alphadroid',
     image: '/speakers/Nitin sharma.png',
     linkedinUrl: 'https://www.linkedin.com/in/nitinpanditofficial/'
   },
   {
     name: 'Sarvesh Shashikumar',
-    role: 'AI Agents Speaker',
+    role: 'Research Assistant',
     topic: 'Building with AI Agents',
     event: 'Ctrl + Future',
+    company: 'IIT Delhi',
     image: '/speakers/Sarvesh Shashikumar.png',
     linkedinUrl: 'https://www.linkedin.com/in/sarvesh-shashikumar/'
   },
   {
     name: 'Arun Chaudhary',
-    role: 'Cybersecurity & OSINT Expert',
+    role: 'Certified Instructor',
     topic: 'OSINT and cybersecurity',
     event: 'Ctrl + Future',
+    company: 'Microsoft',
     image: '/speakers/Arun chaudhary.png',
     linkedinUrl: 'https://www.linkedin.com/in/arunchaudhary-cloud-cybersecurity-genai-aisecurity/'
   },
   {
     name: 'Rajneesh Yadav',
-    role: 'DevOps / AIOps Engineer',
+    role: 'DevOps Specialist',
     topic: 'Agentic Observability',
     event: 'Ctrl + Future',
+    company: 'OpsTree Global',
     image: '/speakers/Rajneesh Yadav.png',
     linkedinUrl: 'https://www.linkedin.com/in/ops-rajneesh/'
   },
@@ -175,6 +179,7 @@ export const speakers: Speaker[] = [
     role: 'AI Engineer',
     topic: 'Agentic Observability',
     event: 'Ctrl + Future',
+    company: 'Nextmantra AI',
     image: '/speakers/Khushi Yadav.png',
     linkedinUrl: 'https://www.linkedin.com/in/khushiiiyadav/'
   },
@@ -185,6 +190,7 @@ export const speakers: Speaker[] = [
     role: 'Assistant Professor',
     topic: 'Research Methodology & Academic Writing',
     event: 'Research Mastery Workshop',
+    company: 'IILM University',
     image: '/speakers/Dr. Vibhav Narayan Singh.png',
     linkedinUrl: 'https://www.linkedin.com/in/vibhav-narayan-singh'
   },
@@ -230,9 +236,10 @@ export const speakers: Speaker[] = [
   // ─── 4. Tech Baithak ────────────────────────────────────────────────────────
   {
     name: 'Tushaar Tulsiyan',
-    role: 'Cloud & AI Strategy Consultant',
+    role: 'Cloud Consultant',
     topic: 'Prompt Engineering & Enterprise AI',
     event: 'Tech Baithak',
+    company: 'WTW',
     image: '/speakers/Tushaar Tulsiyan.png',
     linkedinUrl: 'https://www.linkedin.com/in/tushaar/'
   },
@@ -240,9 +247,10 @@ export const speakers: Speaker[] = [
   // ─── 5. Snap the Lens ───────────────────────────────────────────────────────
   {
     name: 'Chhavi Garg',
-    role: 'Founder @BharatXR & @Arexa',
+    role: 'Founder & CEO',
     topic: 'Create your own Snapchat Lens',
     event: 'Snap the Lens',
+    company: 'Arexa',
     image: '/speakers/Chhavi Garg.png',
     linkedinUrl: 'https://www.linkedin.com/in/chhavigg/'
   },
@@ -250,17 +258,21 @@ export const speakers: Speaker[] = [
   // ─── 6. Techpath 2.O ────────────────────────────────────────────────────────
   {
     name: 'Deepak Sood',
-    role: 'Industry Speaker & Mentor',
+    role: 'Senior AI Engineer',
     topic: 'Career Direction & Tech Pathways',
     event: 'Techpath 2.O',
-    image: '/speakers/Deepak Sood.png'
+    company: 'OpsTree',
+    image: '/speakers/Deepak Sood.png',
+    linkedinUrl: 'https://www.linkedin.com/in/deepaksood619/'
   },
   {
     name: 'Manan Bedi',
-    role: 'Tech Speaker',
+    role: 'Analytics Team Lead',
     topic: 'Engineering Mindset & Industry Transition',
     event: 'Techpath 2.O',
-    image: '/speakers/Manan Bedi.png'
+    company: 'Paytm',
+    image: '/speakers/Manan Bedi.png',
+    linkedinUrl: 'https://www.linkedin.com/in/manan-bedi2908/'
   },
   {
     name: 'Aman Singh',
@@ -273,10 +285,11 @@ export const speakers: Speaker[] = [
   },
   {
     name: 'Tushika Rawat',
-    role: 'Tech Speaker & Consultant',
+    role: 'YouTube Creator',
     topic: 'Career Strategy & Technology Leadership',
     event: 'Techpath 2.O',
-    image: '/speakers/Tushika Rawat.png'
+    image: '/speakers/Tushika Rawat.png',
+    linkedinUrl: 'https://www.linkedin.com/in/tushika-rawat/recent-activity/all/'
   },
 
   // ─── 7. Academic Excellence ─────────────────────────────────────────────────
@@ -311,7 +324,7 @@ export const speakers: Speaker[] = [
   // ─── CompileX & Hands-on Sessions ───────────────────────────────────────────
   {
     name: 'Monika Rajput',
-    role: 'Helping developers build with AI',
+    role: 'AI Advocate',
     topic: 'Building MCP Servers',
     event: 'CompileX',
     image: '/speakers/Monika Rajput.png',
@@ -319,9 +332,10 @@ export const speakers: Speaker[] = [
   },
   {
     name: 'Akshat Tailang',
-    role: 'Mobile Engineering Initiatives with Gen AI',
+    role: 'Technical Lead',
     topic: 'Android App Development',
     event: 'CompileX',
+    company: 'REA Cyber City',
     image: '/speakers/Akshat Tailang.png',
     linkedinUrl: 'https://www.linkedin.com/in/akshat-tailang-4a40a3b8/'
   },
@@ -354,9 +368,10 @@ export const speakers: Speaker[] = [
   },
   {
     name: 'Brahmjit Singh',
-    role: 'Design Systems Lead',
+    role: 'Product Consultant',
     topic: 'Product Design & Design Systems',
     event: 'Design Workshop',
+    company: 'Employabilitylife',
     image: '/speakers/Brahmjit Singh.png',
     linkedinUrl: 'https://www.linkedin.com/in/brahmjit-singh/'
   },
