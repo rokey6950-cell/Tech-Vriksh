@@ -12,4 +12,9 @@ tsconfig.tsbuildinfo
 .scratch/
 .*.html
 .*.log
+# Environment variables & secrets
+.env
+.env*.local
+.env.local
+
 node_modules

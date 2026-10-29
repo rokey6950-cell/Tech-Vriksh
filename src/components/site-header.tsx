@@ -10,11 +10,8 @@ const navItems = [
   { href: '/', label: 'Home' },
   { href: '/events', label: 'Events' },
   { href: '/blog', label: 'Blog' },
-  // Hackathons is off the nav until the page is rebuilt with fuller content and
-  // real images. The route, data and components all remain — uncomment to
-  // restore. Its events still appear on /events, filtered by "Hackathons".
-  // { href: '/hackathons', label: 'Hackathons' },
   { href: '/about', label: 'About' },
+  { href: '/ask', label: 'Ask AI' },
   { href: '/join', label: 'Join' },
   { href: '/partner', label: 'Partner' },
 ];

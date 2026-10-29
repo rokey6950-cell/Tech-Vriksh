@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "typecheck": "tsc --noEmit",
+    "smoke-test": "node scripts/smoke-test.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@perplexity-ai/perplexity_ai": "^0.41.0",
     "@react-three/drei": "^10.7.8",
     "@react-three/fiber": "^9.7.0",
     "@types/three": "^0.185.4",

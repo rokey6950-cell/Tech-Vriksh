@@ -9,6 +9,7 @@ import {
   publicStats,
   statText,
   communityJoinUrl,
+  type Speaker,
 } from '../data';
 
 // ─── Derived data ─────────────────────────────────────────────────────────────
@@ -71,6 +72,202 @@ const TABS = [
 
 type TabId = (typeof TABS)[number]['id'];
 
+// ─── Event Group definitions for Speakers ─────────────────────────────────────
+type EventGroupDef = {
+  id: string;
+  filterKey: string;
+  title: string;
+  tag: string;
+  venue?: string;
+  slug?: string;
+  matcher: (s: Speaker) => boolean;
+};
+
+const EVENT_GROUPS: EventGroupDef[] = [
+  {
+    id: 'ctrl-future',
+    filterKey: 'ctrl-future',
+    title: 'Ctrl + Future',
+    tag: 'Flagship Event',
+    venue: 'OpsTree Global, Noida',
+    slug: 'ctrl-future',
+    matcher: (s) => s.event === 'Ctrl + Future',
+  },
+  {
+    id: 'compilex',
+    filterKey: 'compilex',
+    title: 'CompileX',
+    tag: 'Hands-on Build',
+    venue: 'Unstop Office, Saket, New Delhi',
+    slug: 'compilex-where-ideas-evolve-into-impact',
+    matcher: (s) => s.event === 'CompileX',
+  },
+  {
+    id: 'techpath-1',
+    filterKey: 'techpath-1',
+    title: 'Techpath 1.O',
+    tag: 'Direction Setting',
+    venue: 'Noida Campus Hall',
+    slug: 'techpath-1o-discover-decide-dominate',
+    matcher: (s) => s.event === 'Techpath 1.O',
+  },
+  {
+    id: 'techpath-2',
+    filterKey: 'techpath-2',
+    title: 'Techpath 2.O',
+    tag: 'Industry Pathways',
+    venue: 'Thoughtworks Office, Gurgaon',
+    slug: 'techpath-2o-discover-decide-dominate',
+    matcher: (s) => s.event === 'Techpath 2.O',
+  },
+  {
+    id: 'tech-baithak',
+    filterKey: 'tech-baithak',
+    title: 'Tech Baithak',
+    tag: 'Community Evening',
+    venue: 'Community Meetup Room',
+    slug: 'tech-baithak',
+    matcher: (s) => s.event === 'Tech Baithak',
+  },
+  {
+    id: 'research-mastery',
+    filterKey: 'workshops',
+    title: 'Research Mastery Workshop',
+    tag: 'Academic Mastery',
+    venue: 'Academic Research Session',
+    matcher: (s) => s.event === 'Research Mastery Workshop',
+  },
+  {
+    id: 'snap-lens',
+    filterKey: 'workshops',
+    title: 'Snap the Lens',
+    tag: 'XR & Lens Studio',
+    venue: 'Interactive AR Workshop',
+    matcher: (s) => s.event === 'Snap the Lens',
+  },
+  {
+    id: 'neural-networks',
+    filterKey: 'workshops',
+    title: 'Workshop on Neural Networks',
+    tag: 'Deep Learning',
+    venue: 'AI & Neural Networks Session',
+    matcher: (s) => s.event === 'Neural Networks',
+  },
+  {
+    id: 'web-games',
+    filterKey: 'workshops',
+    title: 'Web Development using Games',
+    tag: 'Interactive Dev',
+    venue: 'Game & Web Engineering',
+    matcher: (s) => s.event === 'Web Dev & Games',
+  },
+  {
+    id: 'academic-excellence',
+    filterKey: 'workshops',
+    title: 'Workshop for Academic Excellence',
+    tag: 'Mentorship',
+    venue: 'Career & Examination Mentorship',
+    matcher: (s) => s.event === 'Academic Excellence',
+  },
+  {
+    id: 'ai-agents-tech',
+    filterKey: 'workshops',
+    title: 'AI Agents & Specialized Engineering',
+    tag: 'Specialized Workshops',
+    venue: 'Industry Engineering Sessions',
+    matcher: (s) =>
+      s.event === 'AI Agent Workshop' ||
+      s.event === 'Design Workshop' ||
+      s.event === 'Research & AI' ||
+      s.event === 'Tech Session',
+  },
+];
+
+const EVENT_FILTER_PILLS = [
+  { id: 'all', label: 'All Sessions' },
+  { id: 'ctrl-future', label: 'Ctrl + Future' },
+  { id: 'compilex', label: 'CompileX' },
+  { id: 'techpath-1', label: 'Techpath 1.O' },
+  { id: 'techpath-2', label: 'Techpath 2.O' },
+  { id: 'tech-baithak', label: 'Tech Baithak' },
+  { id: 'workshops', label: 'Workshops & Labs' },
+] as const;
+
+// ─── Reusable Speaker Card Component ──────────────────────────────────────────
+function SpeakerCard({ speaker }: { speaker: Speaker }) {
+  return (
+    <article
+      key={speaker.name}
+      className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[color:var(--tv-border)] bg-gradient-to-b from-[rgba(16,30,26,0.8)] to-[rgba(11,23,20,0.95)] p-5 sm:p-6 shadow-[var(--tv-shadow-md)] transition-all duration-500 hover:border-[color:var(--tv-primary)]/50 hover:shadow-[0_20px_50px_rgba(57,217,138,0.18)] hover:-translate-y-2"
+    >
+      {/* Image or initial avatar */}
+      <div className="space-y-4">
+        <div className="relative w-full overflow-hidden rounded-2xl aspect-square border border-white/10 bg-black/40 shadow-inner">
+          {speaker.image ? (
+            <Image
+              src={speaker.image}
+              alt={speaker.name}
+              width={600}
+              height={600}
+              className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover:scale-105"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[rgba(57,217,138,0.1)] to-[rgba(33,108,103,0.18)]">
+              <span className="tv-heading text-7xl font-bold text-[color:var(--tv-primary)] opacity-60">
+                {speaker.name.charAt(0)}
+              </span>
+            </div>
+          )}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
+        </div>
+
+        {/* Name, Role & Event/Company badge */}
+        <div className="space-y-1">
+          <div className="flex items-center justify-between gap-2">
+            <h3 className="tv-heading text-xl sm:text-2xl font-bold tracking-[-0.03em] text-white group-hover:text-[color:var(--tv-primary)] transition-colors duration-300">
+              {speaker.name}
+            </h3>
+          </div>
+          <div className="flex items-center justify-between gap-2 pt-0.5">
+            <p className="tv-mono text-xs uppercase tracking-[0.2em] text-[color:var(--tv-cyan)] font-semibold truncate">
+              {speaker.role}
+            </p>
+            {/* Event / Company badge */}
+            <span className="tv-mono text-[0.62rem] uppercase tracking-[0.16em] text-[color:var(--tv-primary)] border border-[color:var(--tv-primary)]/20 rounded-full px-2.5 py-0.5 bg-[color:var(--tv-primary)]/5 shrink-0">
+              {speaker.company || speaker.event}
+            </span>
+          </div>
+        </div>
+
+        {/* Topic as focus text */}
+        <p className="text-xs sm:text-sm leading-relaxed text-[color:var(--tv-text-secondary)] line-clamp-2">
+          {speaker.topic}
+        </p>
+      </div>
+
+      {/* LinkedIn button */}
+      <div className="mt-5 pt-4 border-t border-white/[0.08]">
+        {speaker.linkedinUrl ? (
+          <a
+            href={speaker.linkedinUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="group/link inline-flex w-full items-center justify-center gap-2.5 rounded-full border border-[color:var(--tv-cyan)]/30 bg-[color:var(--tv-cyan)]/8 py-2.5 text-xs tv-mono font-semibold uppercase tracking-[0.18em] text-[color:var(--tv-cyan)] transition-all duration-300 hover:border-[color:var(--tv-cyan)] hover:bg-[color:var(--tv-cyan)]/20 group-hover:border-[color:var(--tv-primary)]/50 group-hover:text-[color:var(--tv-primary)] shadow-[0_0_12px_rgba(107,239,217,0.1)]"
+          >
+            <LinkedInIcon />
+            <span className="transition-transform duration-300 group-hover/link:translate-x-1">Connect on LinkedIn</span>
+          </a>
+        ) : (
+          <div className="inline-flex w-full items-center justify-center gap-2.5 rounded-full border border-white/10 bg-white/[0.02] py-2.5 text-xs tv-mono font-semibold uppercase tracking-[0.18em] text-[color:var(--tv-text-muted)] cursor-default">
+            <LinkedInIcon />
+            <span>LinkedIn coming soon</span>
+          </div>
+        )}
+      </div>
+    </article>
+  );
+}
+
 // ─── Empty state component ────────────────────────────────────────────────────
 function EmptyState({ query }: { query: string }) {
   return (
@@ -95,6 +292,7 @@ function EmptyState({ query }: { query: string }) {
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState<TabId>('team');
   const [search, setSearch] = useState('');
+  const [selectedEventFilter, setSelectedEventFilter] = useState<string>('all');
   const tabListId = useId();
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -125,6 +323,7 @@ export default function AboutPage() {
   function handleTabChange(id: TabId) {
     setActiveTab(id);
     setSearch('');
+    setSelectedEventFilter('all');
     // Scroll content area into view smoothly without jumping above the sticky bar
     setTimeout(() => {
       contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -350,83 +549,123 @@ export default function AboutPage() {
         >
           {activeTab === 'speakers' && (
             <>
-              {filteredSpeakers.length === 0 ? (
-                <EmptyState query={search} />
-              ) : (
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {filteredSpeakers.map((speaker) => (
-                    <article
-                      key={speaker.name}
-                      className="group flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[color:var(--tv-border)] bg-gradient-to-b from-[rgba(16,30,26,0.8)] to-[rgba(11,23,20,0.95)] p-5 sm:p-6 shadow-[var(--tv-shadow-md)] transition-all duration-500 hover:border-[color:var(--tv-primary)]/50 hover:shadow-[0_20px_50px_rgba(57,217,138,0.18)] hover:-translate-y-2"
+              {/* Event Filter Pills Bar */}
+              <div
+                className="mb-8 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none"
+                style={{ scrollbarWidth: 'none' }}
+              >
+                <span className="tv-mono text-[0.65rem] uppercase tracking-[0.2em] text-[color:var(--tv-text-muted)] mr-1 shrink-0 font-semibold">
+                  Sessions:
+                </span>
+                {EVENT_FILTER_PILLS.map((pill) => {
+                  const isPillActive = selectedEventFilter === pill.id;
+                  const count =
+                    pill.id === 'all'
+                      ? speakers.length
+                      : speakers.filter((s) => {
+                          const groups = EVENT_GROUPS.filter((g) => g.filterKey === pill.id);
+                          return groups.some((g) => g.matcher(s));
+                        }).length;
+
+                  return (
+                    <button
+                      key={pill.id}
+                      type="button"
+                      onClick={() => setSelectedEventFilter(pill.id)}
+                      className={[
+                        'inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-xs tv-mono font-medium tracking-[0.12em] transition-all duration-200',
+                        isPillActive
+                          ? 'bg-[color:var(--tv-primary)]/15 border border-[color:var(--tv-primary)]/40 text-[color:var(--tv-primary)] shadow-[0_0_14px_rgba(57,217,138,0.18)] font-semibold'
+                          : 'border border-white/10 bg-white/[0.03] text-[color:var(--tv-text-muted)] hover:text-white hover:bg-white/[0.06]',
+                      ].join(' ')}
                     >
-                      {/* Image or initial avatar */}
-                      <div className="space-y-4">
-                        <div className="relative w-full overflow-hidden rounded-2xl aspect-square border border-white/10 bg-black/40 shadow-inner">
-                          {speaker.image ? (
-                            <Image
-                              src={speaker.image}
-                              alt={speaker.name}
-                              width={600}
-                              height={600}
-                              className="h-full w-full object-cover object-[center_20%] transition-transform duration-700 ease-out group-hover:scale-105"
-                            />
-                          ) : (
-                            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[rgba(57,217,138,0.1)] to-[rgba(33,108,103,0.18)]">
-                              <span className="tv-heading text-7xl font-bold text-[color:var(--tv-primary)] opacity-60">
-                                {speaker.name.charAt(0)}
-                              </span>
-                            </div>
-                          )}
-                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/60 to-transparent" />
-                        </div>
+                      <span>{pill.label}</span>
+                      <span
+                        className={[
+                          'inline-flex h-4 min-w-[1.1rem] items-center justify-center rounded-full px-1.5 text-[0.62rem] font-bold',
+                          isPillActive
+                            ? 'bg-[color:var(--tv-primary)]/25 text-[color:var(--tv-primary)]'
+                            : 'bg-white/10 text-[color:var(--tv-text-muted)]',
+                        ].join(' ')}
+                      >
+                        {count}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
 
-                        {/* Name, Role & Event/Company badge */}
-                        <div className="space-y-1">
-                          <div className="flex items-center justify-between gap-2">
-                            <h3 className="tv-heading text-xl sm:text-2xl font-bold tracking-[-0.03em] text-white group-hover:text-[color:var(--tv-primary)] transition-colors duration-300">
-                              {speaker.name}
-                            </h3>
-                          </div>
-                          <div className="flex items-center justify-between gap-2 pt-0.5">
-                            <p className="tv-mono text-xs uppercase tracking-[0.2em] text-[color:var(--tv-cyan)] font-semibold">
-                              {speaker.role}
-                            </p>
-                            {/* Event / Company badge */}
-                            <span className="tv-mono text-[0.62rem] uppercase tracking-[0.16em] text-[color:var(--tv-primary)] border border-[color:var(--tv-primary)]/20 rounded-full px-2.5 py-0.5 bg-[color:var(--tv-primary)]/5 shrink-0">
-                              {speaker.company || speaker.event}
+              {/* Event Groups or Empty State */}
+              {(() => {
+                const activeEventGroups = EVENT_GROUPS.filter((group) => {
+                  if (selectedEventFilter !== 'all' && group.filterKey !== selectedEventFilter) {
+                    return false;
+                  }
+                  return true;
+                });
+
+                const groupsWithSpeakers = activeEventGroups
+                  .map((group) => ({
+                    ...group,
+                    matchedSpeakers: filteredSpeakers.filter(group.matcher),
+                  }))
+                  .filter((g) => g.matchedSpeakers.length > 0);
+
+                if (groupsWithSpeakers.length === 0) {
+                  return <EmptyState query={search || 'selected event filter'} />;
+                }
+
+                return (
+                  <div className="space-y-12">
+                    {groupsWithSpeakers.map((group) => (
+                      <section key={group.id} className="space-y-6">
+                        {/* Event Header Banner */}
+                        <div className="flex flex-col gap-3 rounded-2xl border border-white/[0.08] bg-gradient-to-r from-[rgba(16,30,26,0.7)] via-[rgba(11,23,20,0.85)] to-transparent p-4 sm:p-5 sm:flex-row sm:items-center sm:justify-between shadow-[var(--tv-shadow-sm)]">
+                          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+                            <span className="relative flex h-2 w-2">
+                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[color:var(--tv-primary)] opacity-75" />
+                              <span className="relative inline-flex h-2 w-2 rounded-full bg-[color:var(--tv-primary)]" />
                             </span>
+                            <h2 className="tv-heading text-xl sm:text-2xl font-bold tracking-[-0.03em] text-white">
+                              {group.title}
+                            </h2>
+                            <span className="tv-mono text-[0.62rem] uppercase tracking-[0.16em] text-[color:var(--tv-primary)] border border-[color:var(--tv-primary)]/25 rounded-full px-2.5 py-0.5 bg-[color:var(--tv-primary)]/10 font-semibold">
+                              {group.tag}
+                            </span>
+                            {group.venue && (
+                              <span className="hidden sm:inline-flex tv-mono text-[0.62rem] uppercase tracking-[0.14em] text-[color:var(--tv-text-muted)] border border-white/10 rounded-full px-2.5 py-0.5 bg-white/[0.03]">
+                                {group.venue}
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="flex items-center gap-3">
+                            <span className="tv-mono text-xs text-[color:var(--tv-text-muted)]">
+                              {group.matchedSpeakers.length} {group.matchedSpeakers.length === 1 ? 'Speaker' : 'Speakers'}
+                            </span>
+                            {group.slug && (
+                              <Link
+                                href={`/events/${group.slug}`}
+                                className="group/link inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs tv-mono text-[color:var(--tv-text-secondary)] hover:border-[color:var(--tv-primary)]/40 hover:text-[color:var(--tv-primary)] hover:bg-[color:var(--tv-primary)]/10 transition-all duration-200"
+                              >
+                                <span>Event Recap</span>
+                                <span className="transition-transform duration-200 group-hover/link:translate-x-0.5">→</span>
+                              </Link>
+                            )}
                           </div>
                         </div>
 
-                        {/* Topic as focus text */}
-                        <p className="text-xs sm:text-sm leading-relaxed text-[color:var(--tv-text-secondary)] line-clamp-2">
-                          {speaker.topic}
-                        </p>
-                      </div>
-
-                      {/* LinkedIn button — shown when URL available, greyed-out placeholder otherwise */}
-                      <div className="mt-5 pt-4 border-t border-white/[0.08]">
-                        {speaker.linkedinUrl ? (
-                          <a
-                            href={speaker.linkedinUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="group/link inline-flex w-full items-center justify-center gap-2.5 rounded-full border border-[color:var(--tv-cyan)]/30 bg-[color:var(--tv-cyan)]/8 py-2.5 text-xs tv-mono font-semibold uppercase tracking-[0.18em] text-[color:var(--tv-cyan)] transition-all duration-300 hover:border-[color:var(--tv-cyan)] hover:bg-[color:var(--tv-cyan)]/20 group-hover:border-[color:var(--tv-primary)]/50 group-hover:text-[color:var(--tv-primary)] shadow-[0_0_12px_rgba(107,239,217,0.1)]"
-                          >
-                            <LinkedInIcon />
-                            <span className="transition-transform duration-300 group-hover/link:translate-x-1">Connect on LinkedIn</span>
-                          </a>
-                        ) : (
-                          <div className="inline-flex w-full items-center justify-center gap-2.5 rounded-full border border-white/10 bg-white/[0.02] py-2.5 text-xs tv-mono font-semibold uppercase tracking-[0.18em] text-[color:var(--tv-text-muted)] cursor-default">
-                            <LinkedInIcon />
-                            <span>LinkedIn coming soon</span>
-                          </div>
-                        )}
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              )}
+                        {/* Grid of Speaker Cards for this Event */}
+                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                          {group.matchedSpeakers.map((speaker) => (
+                            <SpeakerCard key={speaker.name} speaker={speaker} />
+                          ))}
+                        </div>
+                      </section>
+                    ))}
+                  </div>
+                );
+              })()}
             </>
           )}
         </div>
