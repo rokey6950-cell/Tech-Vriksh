@@ -353,7 +353,7 @@ export default function PartnerPage() {
                       <li key={speaker.name} className="flex flex-wrap items-baseline gap-x-2.5 gap-y-0.5">
                         <span className="text-sm font-medium text-white/90">{speaker.name}</span>
                         <span className="tv-mono text-[0.66rem] uppercase tracking-[0.16em] text-[color:var(--tv-cyan)]">
-                          {speaker.role}
+                          {speaker.role}{speaker.company ? ` · ${speaker.company}` : ''}
                         </span>
                         <span className="text-xs text-[color:var(--tv-text-muted)]">— {speaker.topic}</span>
                       </li>

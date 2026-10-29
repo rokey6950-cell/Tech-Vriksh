@@ -587,6 +587,33 @@ export const events: EventItem[] = [
     registrationUrl: 'https://lu.ma/tech-vriksh-techpath-2'
   },
   {
+    slug: 'snap-the-lens',
+    title: 'Snap the Lens: Design Your Reality',
+    subtitle: 'Using Snap Lens Studio',
+    kind: 'workshop',
+    format: 'offline',
+    status: 'past',
+    dateLabel: '27 Sep, 2025',
+    description:
+      'A hands-on Augmented Reality workshop led by Chhavi Garg (Snap AR Partner & Co-Founder, Arexa & Bharat XR). Participants designed and built their own custom Snapchat lenses using Snap\'s Lens Studio, and explored how to monetise AR creations.',
+    image: '/events/snap-the-lens/poster.jpg',
+    galleryImages: [
+      '/events/snap-the-lens/poster.jpg',
+      '/events/snap-the-lens/01.webp',
+      '/events/snap-the-lens/02.webp',
+      '/events/snap-the-lens/03.webp',
+      '/events/snap-the-lens/04.webp',
+      '/events/snap-the-lens/05.webp'
+    ],
+    venue: 'ThoughtWorks Technologies, Gurugram',
+    registrationUrl: 'https://lu.ma/4hle53jj',
+    notes: [
+      'Led by Chhavi Garg — Snap AR Partner & Co-Founder, Arexa & Bharat XR',
+      'Held at ThoughtWorks Technologies, Gurugram · 11:00 AM – 2:00 PM',
+      'Hands-on Snap Lens Studio session with food, prizes & networking'
+    ]
+  },
+  {
     slug: 'tech-baithak',
     title: 'Tech Baithak',
     subtitle: 'Offline Event',

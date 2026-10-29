@@ -213,7 +213,9 @@ export default async function EventRecapPage({
                     <span className="text-sm font-medium leading-tight text-[color:var(--tv-text-primary)]">
                       {spk.name}
                     </span>
-                    <span className="tv-mono text-[0.65rem] text-[color:var(--tv-text-muted)]">{spk.role}</span>
+                    <span className="tv-mono text-[0.65rem] text-[color:var(--tv-text-muted)]">
+                      {spk.role}{spk.company ? ` · ${spk.company}` : ''}
+                    </span>
                     <span className="text-[0.7rem] italic text-[color:var(--tv-text-secondary)]">
                       &ldquo;{spk.topic}&rdquo;
                     </span>

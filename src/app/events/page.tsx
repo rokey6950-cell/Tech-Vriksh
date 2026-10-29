@@ -132,7 +132,9 @@ export default async function EventsPage() {
                           {featuredSpeakers.map((spk) => (
                             <div key={spk.name} className="flex flex-col gap-0.5">
                               <span className="text-sm font-medium text-white leading-tight">{spk.name}</span>
-                              <span className="tv-mono text-[0.65rem] text-[color:var(--tv-text-muted)]">{spk.role}</span>
+                              <span className="tv-mono text-[0.65rem] text-[color:var(--tv-text-muted)]">
+                                {spk.role}{spk.company ? ` · ${spk.company}` : ''}
+                              </span>
                               <span className="text-[0.68rem] text-[color:var(--tv-text-secondary)] italic">"{spk.topic}"</span>
                             </div>
                           ))}
